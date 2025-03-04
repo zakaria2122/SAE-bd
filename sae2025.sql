@@ -60,10 +60,10 @@ order by nomcli, prenomcli;
 -- | etc...
 -- = Reponse question 127235.
 select distinct isbn, titre, nommag, qte
-from POSSEDER natural join MAGASIN natural join LIVRE natural join AUTEUR natural join ECRIRE
-where idauteur not in (
-    select idauteur
-    from LIVRE natural join ECRIRE natural join AUTEUR
+from POSSEDER natural join MAGASIN natural join LIVRE
+where isbn not in (
+    select isbn
+    from ECRIRE
 ) and qte > 8
 order by titre, nommag;
 
@@ -82,6 +82,11 @@ order by titre, nommag;
 -- +-------+-------------------------+-------+
 -- | etc...
 -- = Reponse question 127279.
+SELECT m.idmag, m.nommag, COUNT(DISTINCT c.idcli) AS nbcli
+FROM MAGASIN m
+LEFT JOIN COMMANDE co ON m.idmag = co.idmag
+LEFT JOIN CLIENT c ON co.idcli = c.idcli AND c.villecli = m.villemag
+GROUP BY m.idmag, m.nommag;
 
 
 
@@ -98,6 +103,10 @@ order by titre, nommag;
 -- +-------------------------+------+
 -- | etc...
 -- = Reponse question 127291.
+select nommag, sum(IFNULL(qte,0)) as nbex
+from MAGASIN natural left join COMMANDE natural  join DETAILCOMMANDE
+where datecom = '2022-09-15'
+group by nommag;
 
 
 
@@ -116,6 +125,10 @@ order by titre, nommag;
 -- = Reponse question 127314.
 
 
+insert into LIVRE values ('9782844273765', 'SQL pour les Nuls', 292, 2002, 33.5);
+insert into AUTEUR values ('OL246259A', 'Taylor Allen G.', NULL, NULL);
+insert into AUTEUR values ('OL7670824A', 'Engel Reinhard', NULL, NULL);
+insert into POSSEDER values (7, '9782844273765', 3);
 
 -- +-----------------------+--
 -- * Question 127369 : 2pts --
