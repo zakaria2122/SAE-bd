@@ -1,5 +1,5 @@
 -- Devoir 127
--- Nom: CHER , Prenom: Naick
+-- Nom: MOINS, MAKHLOUF , Prenom: Bastien
 
 -- Feuille SAE2.05 Exploitation d'une base de données: Livre Express
 -- 
