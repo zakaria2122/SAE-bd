@@ -32,13 +32,8 @@ class MySQL(object):
 
     
 
-    
 
-import mysql.connector
-
-import mysql.connector
-
-def faire_factures(requete: str, mois: int, annee: int, bd: mysql.connector.MySQLConnection):
+def faire_factures(requete:str, mois:int, annee:int, bd:MySQL):
 
     curseur=bd.execute(requete,(mois,annee))
 
