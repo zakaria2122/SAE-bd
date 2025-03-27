@@ -12,7 +12,7 @@ grant ALL on Librairie.* to 'andreoletti'@'%' ;
 grant ALL on Librairie.* to 'dalaigre'@'%' ;
 grant ALL on Librairie.* to 'aubrier'@'%' ;
 grant ALL on Librairie.* to 'lechopier'@'%' with grant option;
-
+grant ALL on Librairie.* to 'makhlouf'@'%' with grant option;
 USE `Librairie`;
 
 
