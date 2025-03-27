@@ -1,6 +1,9 @@
 -- Devoir 127
 -- Nom: MOINS, MAKHLOUF , Prenom: Bastien
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6cdfe0d4afdda42fd5bf2871208f61c13af43c60
 
 -- Feuille SAE2.05 Exploitation d'une base de données: Livre Express
 --
