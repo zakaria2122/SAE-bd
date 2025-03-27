@@ -1,18 +1,18 @@
 import sqlalchemy
 import argparse
 import getpass
-
-from sqlalchemy import text
+from sqlalchemy.sql import text
 
 class MySQL(object):
-    def __init__(self, user, passwd, host, database, timeout=20):
+    def __init__(self, user, passwd, host, database,timeout=20):
         self.user = user
         self.passwd = passwd
         self.host = host
         self.database = database
+        #try:
         self.engine = sqlalchemy.create_engine(
-            f'mysql+mysqlconnector://{self.user}:{self.passwd}@{self.host}/{self.database}',
-        )
+                'mysql+mysqlconnector://' + self.user + ':' + self.passwd + '@' + self.host + '/' + self.database,
+                )
         self.cnx = self.engine.connect()
         print("connexion réussie")
 
@@ -20,14 +20,13 @@ class MySQL(object):
         self.cnx.close()
 
     def execute(self, requete, liste_parametres):
-        # Remplacer les "?" par les paramètres dans la requête
         for param in liste_parametres:
-            if isinstance(param, str):
-                requete = requete.replace('?', f"'{param}'", 1)
+            if type(param)==str:
+                requete=requete.replace('?',"'"+param+"'",1)
             else:
-                requete = requete.replace('?', str(param), 1)
-        # Exécuter la requête modifiée
-        requete = text(requete)
+                requete=requete.replace('?',str(param),1)
+ 
+        requete= text(requete)
         return self.cnx.execute(requete)
 
     
@@ -36,7 +35,9 @@ class MySQL(object):
 
 def faire_factures(requete:str, mois:int, annee:int, bd:MySQL):
 
+   
     curseur=bd.execute(requete,(mois,annee))
+
 
     # Initialisation des variables
     res = []
@@ -139,35 +140,22 @@ def faire_factures(requete:str, mois:int, annee:int, bd:MySQL):
 
 
 if __name__ == '__main__':
-
     parser = argparse.ArgumentParser()
-    parser.add_argument("--serveur", dest="nomServeur", help="Nom ou adresse du serveur de base de données", type=str, default="servinfo-maria")
-
+    parser.add_argument("--serveur",dest="nomServeur", help="Nom ou adresse du serveur de base de données", type=str, default="servinfo-maria")
     parser.add_argument("--bd",dest="nomBaseDeDonnees", help="Nom de la base de données", type=str,default='Librairie')
     parser.add_argument("--login",dest="nomLogin", help="Nom de login sur le serveur de base de donnée", type=str, default='makhlouf')
-    parser.add_argument("--requete", dest="fichierRequete", help="Fichier contenant la requete des commandes", type=str, default='fic_req.sql')  
+    parser.add_argument("--requete", dest="fichierRequete", help="Fichier contenant la requete des commandes", type=str , default='fic_req.sql')    
     args = parser.parse_args()
-    
-    # Demande de mot de passe
-    passwd = getpass.getpass("Mot de passe SQL : ")
-    
+    passwd = getpass.getpass("mot de passe SQL:")
     try:
         ms = MySQL(args.nomLogin, passwd, args.nomServeur, args.nomBaseDeDonnees)
     except Exception as e:
-        print("La connexion a échoué avec l'erreur suivante:", e)
+        print("La connection a échoué avec l'erreur suivante:", e)
         exit(0)
-    
-    # Demander à l'utilisateur d'entrer le mois et l'année
-    rep = input("Entrez le mois et l'année sous la forme mm/aaaa : ")
-    mm, aaaa = rep.split('/')
-
-    mois = int(mm)
-    annee = int(aaaa)
-    
-    # Lire la requête depuis le fichier
+    rep=input("Entrez le mois et l'année sous la forme mm/aaaa ")
+    mm,aaaa=rep.split('/')
+    mois=int(mm)
+    annee=int(aaaa)
     with open(args.fichierRequete) as fic_req:
-        requete = fic_req.read()
-    
-    # Afficher le résultat de la fonction
-    print(faire_factures(requete, mois, annee, ms))
-    ms.close()
+        requete=fic_req.read()
+    print(faire_factures(requete,mois,annee,ms))
