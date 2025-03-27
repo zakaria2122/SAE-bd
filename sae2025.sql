@@ -1,9 +1,6 @@
 -- Devoir 127
 -- Nom: MOINS, MAKHLOUF , Prenom: Bastien
-<<<<<<< HEAD
 
-=======
->>>>>>> 6cdfe0d4afdda42fd5bf2871208f61c13af43c60
 
 -- Feuille SAE2.05 Exploitation d'une base de données: Livre Express
 --
@@ -163,13 +160,7 @@ SELECT
     numcom, ', "', datecom, '", "', enligne, '", "', livraison, '", ', idcli, ', "', idmag, '");') AS insertions
 FROM COMMANDE;
 
-
-<<<<<<< HEAD
-
-
-=======
-insertion : 
->>>>>>> 7e59bfc8a12c6f9a94ff54a3f065f8c1ec393574
+ insertion : 
 insert into LIVRE values ('9782844273765', 'SQL pour les Nuls', 292, 2002, 33.5);
 insert into AUTEUR values ('OL246259A', 'Taylor Allen G.', NULL, NULL);
 insert into AUTEUR values ('OL7670824A', 'Engel Reinhard', NULL, NULL);
