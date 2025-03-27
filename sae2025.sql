@@ -149,10 +149,27 @@ group by nommag;
 -- +------------+
 -- | etc...
 -- = Reponse question 127314.
+requete: 
+SELECT 
+    CONCAT('INSERT INTO MAGASIN (idmag, nommag, villemag) VALUES (',
+    idmag, ', "', nommag, '", "', villemag, '");') AS insertions
+FROM MAGASIN;
+SELECT 
+    CONCAT('INSERT INTO CLIENT (idcli, nomcli, villecli) VALUES (',
+    idcli, ', "', nomcli, '", "', villecli, '");') AS insertions
+FROM CLIENT;
+SELECT 
+    CONCAT('INSERT INTO COMMANDE (numcom, datecom, enligne, livraison, idcli, idmag) VALUES (',
+    numcom, ', "', datecom, '", "', enligne, '", "', livraison, '", ', idcli, ', "', idmag, '");') AS insertions
+FROM COMMANDE;
 
 
+<<<<<<< HEAD
 
 
+=======
+insertion : 
+>>>>>>> 7e59bfc8a12c6f9a94ff54a3f065f8c1ec393574
 insert into LIVRE values ('9782844273765', 'SQL pour les Nuls', 292, 2002, 33.5);
 insert into AUTEUR values ('OL246259A', 'Taylor Allen G.', NULL, NULL);
 insert into AUTEUR values ('OL7670824A', 'Engel Reinhard', NULL, NULL);
