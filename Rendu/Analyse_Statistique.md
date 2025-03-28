@@ -1,5 +1,7 @@
+---
+geometry: top=10mm, right=20mm, left=20mm
+---
 # Analyse du Nuage de Points
-
 ## 1. Nuage de Points
 Le nuage de points représentant le chiffre d'affaires (**CA**) en fonction du nombre de ventes (**NbVentes**). Chaque point bleu correspond au nombre de ventes et du chiffre d'affaires.
 
@@ -9,10 +11,11 @@ Le nuage de points représentant le chiffre d'affaires (**CA**) en fonction du n
 On observe une tendance générale à la hausse, ce qui signifie que lorsque le nombre de ventes augmente, le chiffre d'affaires tend également à augmenter. Les points sont dispersés autour d'une ligne droite, suggérant une relation linéaire entre les deux variables. Cependant, certains points s'écartent de cette tendance, indiquant des situations particulières ou des anomalies.
 
 ## 3. Modèle Proposé
-![](../Images/Graphique_stat.png)
 Un modèle de régression linéaire est proposé pour expliquer la relation entre le nombre de ventes et le chiffre d'affaires. Ce modèle est justifié par la tendance linéaire observée dans le nuage de points. L'équation de régression est : 
-**CA = [a * x + b for x in X]**
 
+![](../Images/Graphique_stat.png)
+
+**CA = [a * x + b for x in X]**
 Où :
 - **\(a\)** : La pente de la droite de régression
 - **\(b\)** : L'ordonnée à l'origine
@@ -28,7 +31,6 @@ Ainsi, la fonction complète est :
 ![](../Images/Estimation_stat.png)
 En utilisant le modèle de régression linéaire, nous pouvons estimer le nombre de ventes nécessaires pour atteindre un chiffre d'affaires de 1250 euros. L'estimation est calculée selon la formule suivante qui est de 27 :
 **nb_ventes_estime = (chiffre_affaires - b) / a**
-
 Où :
 - **\(chiffre\_affaires = 1250\)**
 - **\(a = 19.908\)**
