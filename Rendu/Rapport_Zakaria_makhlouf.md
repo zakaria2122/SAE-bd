@@ -43,5 +43,5 @@ Les compétences utilisées lors de cette SAE :
 - **R2.06 - Exploitation d’une base de données** : Utilisation des fonctions d’agrégat, des vues et des requêtes `SELECT`, ainsi que l’affichage des valeurs nulles.  
 - **R2.08 - Outils numériques pour les statistiques descriptives** : Réalisation de graphiques statistiques comme vu en TP. J’ai utilisé **NumPy et Matplotlib** pour calculer et visualiser les tendances, notamment avec **la droite de régression** pour analyser l’évolution des ventes en fonction du chiffre d'affaires.
 
-![](Stat.png)
+![](../Images/Graphique_stat.png)
 
